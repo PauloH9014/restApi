@@ -15,7 +15,7 @@ public class DogController {
         this.dogService = dogService;
     }
 
-    @GetMapping("/dogs")
+    @GetMapping("/api/v1/dogs")
     public List<Dog> getDogs(){
         return dogService.getDogDetails();
     }
