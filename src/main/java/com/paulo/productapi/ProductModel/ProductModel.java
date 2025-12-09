@@ -3,23 +3,19 @@
 package com.paulo.productapi.ProductModel;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
-@Entity
-@NoArgsConstructor // OBRIGATÓRIO para o JPA
-@Data // Inclui Getters, Setters, toString, equals, etc.
+// APRENDIZADO DE JPA.ORM.H2
 
-// 🚨 O NOME DA CLASSE ESTÁ CORRETO: public class ProductModel
-
+@Entity // Uma the annotation of tabel of databasee
+@Getter
+@Setter
 public class ProductModel {
+    @Id // fields of primary keys
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // this annotations is of auto-generate primary-keys.
+    private Long id; // JPA
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String name;
-
-    // Agora o Lombok cuida de todos os construtores, Getters e Setters.
+    private String namePro; // -> column
+    private int codPro; // -> column
+    private String descPro; // -> column
 }

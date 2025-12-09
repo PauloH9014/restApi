@@ -6,6 +6,7 @@ import com.paulo.productapi.ProductRepository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.management.Descriptor;
 import java.util.List;
 
 @Service
@@ -14,19 +15,15 @@ public class ProductService {
     @Autowired
     private ProductRepository repositoryProduct;
 
-    public ProductModel save(ProductModel productModel){
-        return repositoryProduct.save(productModel);
+    public ProductModel createProduto(long id,String namePro,int codPro, String descPro){
+        ProductModel varPro = new ProductModel();
+        varPro.setId(id);
+        varPro.setNamePro(namePro);
+        varPro.setCodPro(codPro);
+        varPro.setDescPro(descPro);
+        return repositoryProduct.save(varPro);
     }
-
-    public List<ProductModel> findAll(){
-        return repositoryProduct.findAll();
-    }
-
-    public ProductModel findById(Long id){
-        return repositoryProduct.findById(id).orElse(null);
-    }
-
-    public void delete(Long id){
-        repositoryProduct.deleteById(id);
+    public ProductModel getProduto(Long id){
+       return repositoryProduct.findById(id).orElse(null);
     }
 }
